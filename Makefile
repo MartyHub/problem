@@ -11,7 +11,7 @@ lint:
 	golangci-lint run --config .golangci.yaml
 
 test:
-	go test ./...
+	go test -race -timeout 30s ./...
 
 tidy:
 	go mod tidy

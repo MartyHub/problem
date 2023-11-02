@@ -3,6 +3,8 @@
 `Problem` is a simple Go library implementing [RFC 7807](https://datatracker.ietf.org/doc/html/rfc7807): Problem Details
 for HTTP APIs.
 
+![build](https://github.com/MartyHub/problem/actions/workflows/go.yml/badge.svg)
+
 ## Usage
 
 ```go
