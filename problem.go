@@ -93,7 +93,7 @@ func (pb *Details) asMap() map[string]any {
 	if pb.Type == nil {
 		result[fieldType] = URLAboutBlank
 
-		if status, found := StatusByCode[pb.Status]; found {
+		if status := Status(pb.Status); status != "" {
 			result[fieldTitle] = status
 		}
 	} else {
