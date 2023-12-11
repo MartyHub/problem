@@ -4,6 +4,7 @@
 for HTTP APIs.
 
 ![build](https://github.com/MartyHub/problem/actions/workflows/go.yml/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/MartyHub/problem)](https://goreportcard.com/report/github.com/MartyHub/problem)
 
 ## Usage
 
