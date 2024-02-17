@@ -25,7 +25,7 @@ const (
 var ErrJSON = errors.New("JSON error")
 
 // Details is the problem details object as defined by the RFC 7807.
-type Details struct { //nolint:musttag
+type Details struct {
 	Type     *url.URL
 	Title    string
 	Status   int

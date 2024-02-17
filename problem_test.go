@@ -94,7 +94,7 @@ func TestDetails_UnmarshalJSON(t *testing.T) {
 	assert.True(t, found)
 
 	balance, found := pb.Get("balance")
-	assert.Equal(t, float64(30), balance)
+	assert.InEpsilon(t, 30, balance, 0.0)
 	assert.True(t, found)
 
 	assert.Equal(t, "Your current balance is 30, but that costs 50.", pb.Detail)
