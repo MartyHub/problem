@@ -16,7 +16,7 @@ func TestDetails_MarshalJSON_Default(t *testing.T) {
 	now := time.Now()
 
 	pb := New(http.StatusForbidden, "Your current balance is 30, but that costs 50.").
-		Error(errors.New("test error")). //nolint:goerr113
+		Error(errors.New("test error")).
 		Put(fieldTimestamp, now).
 		Request(&http.Request{RequestURI: "/transfer"}) //nolint:exhaustruct
 

@@ -1,26 +1,17 @@
+version: "2"
 run:
   modules-download-mode: readonly
-
-output:
-  sort-results: true
-
 linters:
+  default: all
   disable:
     - depguard
     - paralleltest
+    - revive
     - testpackage
     - varnamelen
-  presets:
-    - bugs
-    - comment
-    - complexity
-    - error
-    - format
-    - import
-    - metalinter
-    - module
-    - performance
-    - sql
-    - style
-    - test
-    - unused
+  exclusions:
+    warn-unused: true
+    rules:
+      - linters:
+          - err113
+        path: _test.go
