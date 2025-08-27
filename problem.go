@@ -87,6 +87,32 @@ func (pb *Details) MarshalJSON() ([]byte, error) {
 	return res, nil
 }
 
+func (pb *Details) UnmarshalJSON(bytes []byte) error {
+	var err error
+
+	data := make(map[string]any)
+
+	if err = json.Unmarshal(bytes, &data); err != nil {
+		return fmt.Errorf("%w: %s", ErrJSON, err.Error())
+	}
+
+	pb.Title = pop[string](data, fieldTitle)
+	pb.Status = int(pop[float64](data, fieldStatus))
+	pb.Detail = pop[string](data, fieldDetail)
+
+	if pb.Type, err = popURL(data, fieldType, URLAboutBlank); err != nil {
+		return err
+	}
+
+	if pb.Instance, err = popURL(data, fieldInstance, ""); err != nil {
+		return err
+	}
+
+	pb.extensions = data
+
+	return nil
+}
+
 func (pb *Details) asMap() map[string]any {
 	result := pb.extensions
 
@@ -117,32 +143,6 @@ func (pb *Details) asMap() map[string]any {
 	}
 
 	return result
-}
-
-func (pb *Details) UnmarshalJSON(bytes []byte) error {
-	var err error
-
-	data := make(map[string]any)
-
-	if err = json.Unmarshal(bytes, &data); err != nil {
-		return fmt.Errorf("%w: %s", ErrJSON, err.Error())
-	}
-
-	pb.Title = pop[string](data, fieldTitle)
-	pb.Status = int(pop[float64](data, fieldStatus))
-	pb.Detail = pop[string](data, fieldDetail)
-
-	if pb.Type, err = popURL(data, fieldType, URLAboutBlank); err != nil {
-		return err
-	}
-
-	if pb.Instance, err = popURL(data, fieldInstance, ""); err != nil {
-		return err
-	}
-
-	pb.extensions = data
-
-	return nil
 }
 
 func pop[T any](data map[string]any, key string) T { //nolint:ireturn

@@ -5,6 +5,7 @@ linters:
   default: all
   disable:
     - depguard
+    - noinlineerr
     - paralleltest
     - revive
     - testpackage
